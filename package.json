@@ -1,0 +1,79 @@
+{
+  "name": "gollum",
+  "version": "1.0.0",
+  "description": "grpc develop project",
+  "main": "index.js",
+  "author": "Shi-Shi-Ki",
+  "license": "MIT",
+  "scripts": {
+    "server": "ts-node src/server.ts",
+    "lint": "eslint src/ --fix",
+    "test": "jest",
+    "compile": "tsc",
+    "genDomain": "ts-node src/gen.ts",
+    "genPb": "sh generate.sh code",
+    "genPbDoc": "sh generate.sh doc",
+    "evans": "evans --port 50051 --host localhost --path proto --proto project.proto",
+    "runJs": "node dist/src/server.js",
+    "evansStg": "evans --host bsd-project.stg-new.levtech.org --path proto --proto project.proto",
+    "evansPrd": "evans --host bsd-project.levtech.jp --path proto --proto project.proto",
+    "runTestClient": "ts-node src/client.ts"
+  },
+  "dependencies": {
+    "cls-hooked": "^4.2.2",
+    "config": "^3.3.1",
+    "google-protobuf": "^3.12.2",
+    "grpc": "^1.24.3",
+    "lodash": "^4.17.19",
+    "log4js": "^6.3.0",
+    "luxon": "^1.24.1",
+    "mysql2": "^2.1.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.1.0",
+    "ts-babel-node": "^1.1.1",
+    "tsyringe": "^4.3.0",
+    "typescript": "^3.9.5",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "@types/cls-hooked": "^4.3.0",
+    "@types/config": "^0.0.36",
+    "@types/eslint": "^7.2.0",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/google-protobuf": "^3.7.2",
+    "@types/jest": "^26.0.3",
+    "@types/lodash": "^4.14.162",
+    "@types/luxon": "^1.24.1",
+    "@types/prettier": "^2.0.1",
+    "@types/sinon": "^9.0.5",
+    "@types/validator": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "babel-plugin-macros": "^2.8.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "grpc-tools": "^1.9.0",
+    "grpc_tools_node_protoc_ts": "^4.0.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "jest-mock-extended": "^1.0.9",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "sinon": "^9.0.3",
+    "ts-jest": "^26.1.1",
+    "ts-nameof.macro": "^4.2.2",
+    "ts-node": "^8.10.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

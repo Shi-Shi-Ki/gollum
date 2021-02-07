@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  gateway:
+    build: ./config/gateway
+    container_name: gollum_gateway
+    ports:
+      - "8091:8091"
+    networks:
+      gollum-bff:
+        aliases: 
+          - gollum-gateway
+  app:
+    tty: true
+    build:
+      dockerfile: ./config/node/Dockerfile
+      context: .
+    container_name: gollum_api
+    ports: 
+      - "50051:50051"
+    networks:
+      - gollum-bff
+    volumes:
+      - .:/usr/src/app
+  mysql:
+      build: ./config/mysql
+      container_name: gollum_mysql
+      networks:
+        gollum-bff:
+          aliases:
+            - mysql 
+      ports:
+          - "3390:3306"
+      environment:
+        - MYSQL_DATABASE=dev
+        - MYSQL_ROOT_PASSWORD=developer
+      volumes:
+        - mysql_gollum:/var/lib/mysql
+volumes:
+  mysql_gollum:
+    driver: local
+networks:
+  gollum-bff:
+    driver: bridge
+    name: gollum-bff
