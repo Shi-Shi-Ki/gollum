@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+// 基本的な型が使用可能
+// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf
+import "google/protobuf/timestamp.proto";
+// protodepで取得した依存は、以下の形で参照
+// デフォルトでは、Googleの拡張基本型を追加してある
+import "date.proto";
+import "code.proto"; // google公式のレスポンスコードenumリスト
+//import "entity/sample.proto";
+
+package ltp.sample;
+
+/**
+ * テスト用のPingPongサービス
+ */
+service PingPong {
+  /*
+   * Ping RPC
+   */
+  // insert
+  rpc ping(PingRequest) returns (PingResponse);
+  // select
+//  rpc hoge(HogeRequest) returns (HogeResponse);
+  // update
+//  rpc fuga(FugaRequest) returns (FugaResponse);
+  // delete
+//  rpc piyo(PiyoRequest) returns (PiyoResponse);
+}
+
+message PingRequest {
+//  string additional_message = 1;
+//  google.protobuf.Timestamp date = 2;
+//  google.type.Date date2 = 3;
+  string name = 1;
+}
+
+message PingResponse {
+  string message = 1;
+}
+
+//message HogeRequest {
+//  int32 search_id = 1;
+//}
+//
+//message HogeResponse {
+//  ltp.entity.Sample result = 1;
+//  google.rpc.Code result_code = 2;
+//}
+
+//message FugaRequest {
+//  ltp.entity.Sample data = 1;
+//}
+//
+//message FugaResponse {
+//  bool result = 1;
+//}
+
+//message PiyoRequest {
+//  int32 delete_id = 1;
+//}
+//
+//message PiyoResponse {
+//  bool result = 1;
+//}
+

@@ -3,3 +3,9 @@ proto_outdir = "./proto/dep"
 [[dependencies]]
   target = "github.com/googleapis/googleapis/google/type"
   branch = "master"
+
+[[dependencies]]
+  target = "github.com/googleapis/googleapis/google/rpc"
+  branch = "master"
+  ignores = ["./context", "./error_details", "./status"]
+

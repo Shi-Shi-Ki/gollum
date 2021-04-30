@@ -4,7 +4,7 @@ services:
     build: ./config/gateway
     container_name: gollum_gateway
     ports:
-      - "8091:8091"
+      - "8092:8091"
     networks:
       gollum-bff:
         aliases: 
