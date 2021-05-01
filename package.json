@@ -13,6 +13,7 @@
     "compileTool": "tsc --p tool/tsconfig.json",
     "genPb": "sh generate.sh code",
     "genPbDoc": "sh generate.sh doc",
+    "typeorm": "typeorm",
     "evans": "evans --port 50051 --host localhost --path proto --proto project.proto",
     "runJs": "node dist/src/bootstrap/Server.js",
     "runTool": "ts-node tool/src/index.ts",
