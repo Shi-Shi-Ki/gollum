@@ -124,3 +124,9 @@ config/local.ts
 
 #vim project config
 .vim/
+
+#grpc generate file directory
+generated/
+
+#grpc plugin compiled file directory
+tool/lib/

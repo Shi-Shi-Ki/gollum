@@ -6,18 +6,21 @@
   "author": "Shi-Shi-Ki",
   "license": "MIT",
   "scripts": {
-    "server": "ts-node src/server.ts",
+    "server": "ts-node src/bootstrap/Server.ts",
     "lint": "eslint src/ --fix",
     "test": "jest",
     "compile": "tsc",
-    "genDomain": "ts-node src/gen.ts",
+    "compileTool": "tsc --p tool/tsconfig.json",
     "genPb": "sh generate.sh code",
     "genPbDoc": "sh generate.sh doc",
+    "typeorm": "typeorm",
     "evans": "evans --port 50051 --host localhost --path proto --proto project.proto",
-    "runJs": "node dist/src/server.js",
+    "runJs": "node dist/src/bootstrap/Server.js",
+    "runTool": "ts-node tool/src/index.ts",
     "evansStg": "evans --host bsd-project.stg-new.levtech.org --path proto --proto project.proto",
     "evansPrd": "evans --host bsd-project.levtech.jp --path proto --proto project.proto",
-    "runTestClient": "ts-node src/client.ts"
+    "testClient": "ts-node src/Client.ts",
+    "testTool": "ts-node tool/src/index.ts"
   },
   "dependencies": {
     "cls-hooked": "^4.2.2",
@@ -32,8 +35,10 @@
     "sequelize": "^6.1.0",
     "ts-babel-node": "^1.1.1",
     "tsyringe": "^4.3.0",
+    "typeorm": "^0.2.28",
     "typescript": "^3.9.5",
-    "validator": "^13.1.1"
+    "validator": "^13.1.1",
+    "voca": "^1.4.0"
   },
   "devDependencies": {
     "@types/cls-hooked": "^4.3.0",
